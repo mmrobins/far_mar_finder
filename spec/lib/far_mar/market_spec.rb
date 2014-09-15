@@ -7,6 +7,8 @@ describe FarMar::Market do
     end
 
     it "'all' should return" do
+      puts FarMar::Market.all.count
+
       expect(FarMar::Market.all.count).to eq 500
     end
 
