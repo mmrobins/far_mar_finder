@@ -4,6 +4,7 @@ In this assignment we will be creating an application to look up Farmers Markets
 
 ## Authors
  Allie Sterling
+ Mixolidia Gautreaux
 
 
 ### Getting Started
