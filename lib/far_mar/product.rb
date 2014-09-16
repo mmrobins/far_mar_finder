@@ -10,7 +10,7 @@ module FarMar
 
     def self.all(file_path="./support/products.csv")
       file_contents = CSV.read(file_path)
-      @@products = file_contents.collect {|product| Product.new(product)}
+      @@products ||= file_contents.collect {|product| Product.new(product)}
     end
 
     def vendor

@@ -11,27 +11,35 @@ module FarMar
 
     def self.all(file_path="./support/vendors.csv")
       file_contents = CSV.read(file_path)
-      @@vendors = file_contents.collect { |vendor| Vendor.new(vendor)}
+      @@vendors ||= file_contents.collect { |vendor| Vendor.new(vendor)}
     end
 
     def market
       Market.find(@market_id)
     end
 
-    def revenue
+    def revenue(date=nil)
       sum = 0
-      sales.each { |sale| sum += sale.amount }
+      sales(date).each { |sale| sum += sale.amount }
       sum
     end
+
+    # def time_to_day(time)
+    #   Date.new(time.year, time.month, time.day)
+    # end
 
     def products
       Product.all
       Product.by_vendor(@id)
     end
 
-    def sales
+    def sales(date = nil) #date is a date object (not a date time obj)
       Sale.all
-      Sale.by_vendor(@id)
+      sales = Sale.by_vendor(@id)
+      if date != nil
+        sales = sales.collect { |sale| sale.purchase_time == date }
+      end
+      sales
     end
 
     def self.by_market(market_id)

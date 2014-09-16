@@ -12,7 +12,7 @@ module FarMar
 
     def self.all(file_path="./support/sales.csv")
       file_contents = CSV.read(file_path)
-      @@sales = file_contents.collect { |sale| Sale.new(sale) }
+      @@sales ||= file_contents.collect { |sale| Sale.new(sale) }
     end
 
     def self.find(id)

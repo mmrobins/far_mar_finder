@@ -14,7 +14,7 @@ module FarMar
 
     def self.all(file_path="./support/markets.csv")
       file_contents = CSV.read(file_path)
-      @@markets = file_contents.collect { |market| Market.new(market) }
+      @@markets ||= file_contents.collect { |market| Market.new(market) }
     end
 
     def vendors
@@ -31,6 +31,18 @@ module FarMar
       @@markets.find_all do |market|
         (market.name.downcase.include? search_term) || (market.vendor_names.include? search_term)
       end
+    end
+
+    def prefered_vendor(date = nil)
+      highest_revenue = 0
+      best_vendor = nil
+      vendors.each do |vendor|
+        if vendor.revenue(date) > highest_revenue
+          highest_revenue = vendor.revenue(date)
+          best_vendor = vendor
+        end
+      end
+      best_vendor
     end
 
     def vendor_names
