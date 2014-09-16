@@ -1,25 +1,17 @@
 module FarMar
   class Vendor
-    attr_reader :id, :name, :employees, :market_id, :products, :sales
+    attr_reader :id, :name, :employees, :market_id
 
     def initialize(vendor_array)
       @id = vendor_array[0].to_i
       @name = vendor_array[1]
       @employees = vendor_array[2]
       @market_id = vendor_array[3].to_i
-      @sales = []
-      @products = []
     end
 
     def self.all(file_path="./support/vendors.csv")
       file_contents = CSV.read(file_path)
-      @@vendors = file_contents.collect do |vendor|
-        temp = Vendor.new(vendor)
-        Market.find(temp.market_id).vendors << temp
-        temp
-      end
-      Product.all
-      @@vendors
+      @@vendors = file_contents.collect { |vendor| Vendor.new(vendor)}
     end
 
     def market
@@ -28,10 +20,18 @@ module FarMar
 
     def revenue
       sum = 0
-      @sales.each do |sale|
-        sum += sale.amount
-      end
+      sales.each { |sale| sum += sale.amount }
       sum
+    end
+
+    def products
+      Product.all
+      Product.by_vendor(@id)
+    end
+
+    def sales
+      Sale.all
+      Sale.by_vendor(@id)
     end
 
     def self.by_market(market_id)

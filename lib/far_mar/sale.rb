@@ -12,18 +12,20 @@ module FarMar
 
     def self.all(file_path="./support/sales.csv")
       file_contents = CSV.read(file_path)
-      @@sales = file_contents.collect do |sale|
-        temp = Sale.new(sale)
-        unless temp.vendor_id == 0 || temp.product_id == 0
-          Vendor.find(temp.vendor_id).sales << temp
-          Product.find(temp.product_id).sales << temp
-        end
-        temp
-      end
+      @@sales = file_contents.collect { |sale| Sale.new(sale) }
     end
 
     def self.find(id)
       @@sales.find { |sale| sale.id == id }
     end
+
+    def self.by_product(product_id)
+      @@sales.find_all { |sale| sale.product_id == product_id }
+    end
+
+    def self.by_vendor(vendor_id)
+      @@sales.find_all { |sale| sale.vendor_id == vendor_id }
+    end
+
   end
 end

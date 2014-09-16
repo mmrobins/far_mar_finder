@@ -1,27 +1,26 @@
 module FarMar
   class Product
-    attr_reader :id, :name, :vendor_id, :sales
+    attr_reader :id, :name, :vendor_id
 
     def initialize(product_array)
       @id = product_array[0].to_i
       @name = product_array[1]
       @vendor_id = product_array[2].to_i
-      @sales = []
     end
 
     def self.all(file_path="./support/products.csv")
       file_contents = CSV.read(file_path)
-      @@products = file_contents.collect do |product|
-        temp = Product.new(product)
-        Vendor.find(temp.vendor_id).products << temp
-        temp
-      end
-      Sale.all
-      @@products
+      @@products = file_contents.collect {|product| Product.new(product)}
     end
 
     def vendor
+      Vendor.all
       Vendor.find(@vendor_id)
+    end
+
+    def sales
+      Sale.all
+      Sale.by_product(@id)
     end
 
     def number_of_sales
