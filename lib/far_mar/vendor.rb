@@ -32,7 +32,7 @@ module FarMar
     end
 
     def products
-
+      FarMar::Product.all.select { |p| p.vendor_id == @id}
     end
 
   end
