@@ -5,7 +5,7 @@ module FarMar
     def initialize(v_array)
       @id = v_array[0].to_i
       @name = v_array[1]
-      @no_of_employees = v_array[2]
+      @no_of_employees = v_array[2].to_i
       @market_id = v_array[3].to_i
     end
 
@@ -16,12 +16,25 @@ module FarMar
     end
 
     def self.find(id)
-      @vendors.find { |v| v == id }
+      @vendors.find { |v| v.id == id }
     end
 
     def self.by_market(market_id)
       @vendors.select { |v| v.market_id == market_id }
     end
+
+    def market
+      FarMar::Market.all.find { |m| m.id == @market_id }
+    end
+
+    def sales
+      FarMar::Sale.all.select { |s| s.vendor_id == @id }
+    end
+
+    def products
+
+    end
+
   end
 
 end
