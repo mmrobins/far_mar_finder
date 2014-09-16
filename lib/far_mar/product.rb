@@ -18,5 +18,18 @@ module FarMar
       @products.find { |p| p.id == id }
     end
 
+    def self.by_vendor(vendor_id)
+      @products.select { |p| p.vendor_id == vendor_id }
+
+    end
+
+    def vendor
+      FarMar::Vendor.all.find { |v| v.id == @vendor_id }
+    end
+
+    def sales
+      FarMar::Sale.all.select { |s| s.product_id == @id }
+    end
+
   end
 end
