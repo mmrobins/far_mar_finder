@@ -19,9 +19,25 @@ describe FarMar::Vendor do
       expect(FarMar::Vendor).to respond_to :by_market
     end
 
-    it "find the first vendor by market 1" do
+    it "finds the first vendor by market 1" do
       expect(FarMar::Vendor.by_market(100).first.name).to eq "Schiller-Ledner"
     end
+
+    # describe "#revenue_hash" do
+    #   it "returns a hash" do
+    #     expect((FarMar::Vendor.revenue_hash).class).to eq Hash
+    #   end
+    #
+    #   it "returns Vendor #2 for revenue 5727"
+    #     expect(((FarMar::Vendor.revenue_hash.key(5727))).id).to eq 2
+    # end
+
+    # describe "#most_revenue" do
+    #   it "returns a vendor object" do
+    #     expect((FarMar::Vendor.most_revenue(1)[0]).class).to eq FarMar::Vendor
+    #   end
+    # end
+
   end
 
   describe "attributes" do
