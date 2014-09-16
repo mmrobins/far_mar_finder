@@ -82,6 +82,14 @@ describe FarMar::Market do
       it "returns vendor #5" do
         expect((market.prefered_vendor).id).to eq 5
       end
+
+      it "returns a vendor object when given a date" do
+        expect(market.prefered_vendor(Date.new(2013,11,8)).class).to eq FarMar::Vendor
+      end
+
+      it "returns nil when given a date with no sales" do
+        expect(market.prefered_vendor(Date.new(500,11,8))).to eq nil
+      end
     end
   end
 end

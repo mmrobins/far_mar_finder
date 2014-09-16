@@ -37,7 +37,7 @@ module FarMar
       Sale.all
       sales = Sale.by_vendor(@id)
       if date != nil
-        sales = sales.collect { |sale| sale.purchase_time == date }
+        sales = sales.find_all { |sale| sale.purchase_time === date }
       end
       sales
     end
