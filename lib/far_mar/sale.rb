@@ -4,8 +4,8 @@ module FarMar
 
     def initialize(s_array)
       @id = s_array[0].to_i
-      @amount = s_array[1]
-      @purchase_time = s_array[2]
+      @amount = s_array[1].to_i
+      @purchase_time = Time.parse(s_array[2])
       @vendor_id = s_array[3].to_i
       @product_id = s_array[4].to_i
     end
@@ -15,6 +15,23 @@ module FarMar
         Sale.new(s)
       end
     end
+
+    def self.find(id)
+      @sales.find { |s| s.id == id }
+    end
+
+    def vendor
+      FarMar::Vendor.all.find { |v| v.id == @vendor_id }
+    end
+
+    def product
+      FarMar::Product.all.find { |p| p.vendor_id = @vendor_id}
+    end
+
+    def self.between(beginning_time, end_time)
+      
+    end
+
   end
 
 end

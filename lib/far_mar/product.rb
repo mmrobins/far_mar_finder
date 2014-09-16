@@ -31,5 +31,9 @@ module FarMar
       FarMar::Sale.all.select { |s| s.product_id == @id }
     end
 
+    def number_of_sales
+      sales.count
+    end
+
   end
 end
