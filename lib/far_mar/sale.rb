@@ -29,7 +29,9 @@ module FarMar
     end
 
     def self.between(beginning_time, end_time)
-      
+      b = Time.parse(beginning_time)
+      e = Time.parse(end_time)
+      self.all.select { |s| s.purchase_time >= b && s.purchase_time <= e }.count
     end
 
   end
