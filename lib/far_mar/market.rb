@@ -21,6 +21,11 @@ module FarMar
     def self.find(id)
       @markets.find { |m| m.id == id }
     end
+
+    def vendors
+      FarMar::Vendor.all
+    end
+
   end
 end
 
