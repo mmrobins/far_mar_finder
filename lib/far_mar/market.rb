@@ -26,5 +26,19 @@ module FarMar
       @@markets.find { |market| market.id == id }
     end
 
+    def self.search(search_term)
+      search_term.downcase!
+      @@markets.find_all do |market|
+        (market.name.downcase.include? search_term) || (market.vendor_names.include? search_term)
+      end
+    end
+
+    def vendor_names
+      vendors.collect { |vendor| vendor.name.downcase }.join(" ")
+    end
+
+    def products
+      vendors.collect { |vendor| vendor.products }
+    end
   end
 end

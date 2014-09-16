@@ -13,6 +13,20 @@ describe FarMar::Market do
     it "responds to 'find'" do
       expect(FarMar::Market).to respond_to :find
     end
+
+    it "responds to 'search'" do
+      expect(FarMar::Market).to respond_to :search
+    end
+
+    it "'search('school') should return array of 3" do
+      school_results = FarMar::Market.search("school")
+      expect(school_results.count).to eq 3
+    end
+
+    it "'search('school') should find the market with id 75" do
+      ids = FarMar::Market.search("school").collect { |hit| hit.id }
+      expect(ids.include? 75)
+    end
   end
 
   describe "attributes" do
