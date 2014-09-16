@@ -42,6 +42,14 @@ describe FarMar::Vendor do
     end
   end
 
+  describe "#revenue" do
+    let(:vendor) { FarMar::Vendor.find(2) }
+
+    it "returns 0 when given a date with no sales" do
+      expect(vendor.revenue(Date.new(500,11,8))).to eq 0
+    end
+  end
+
   describe "associations" do
     let(:vendor) { FarMar::Vendor.find(1) }
 

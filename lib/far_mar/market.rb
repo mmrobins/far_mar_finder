@@ -45,6 +45,16 @@ module FarMar
       best_vendor
     end
 
+    def worst_vendor(date = nil)
+      sale_sums = {}
+      vendors.each do |vendor|
+        sale_sums[vendor] = vendor.revenue(date)
+      end
+      sale_sums.delete_if { |k, v| v == 0 }
+      lowest_revenue = sale_sums.values.min
+      sale_sums.key(lowest_revenue)
+    end
+
     def vendor_names
       vendors.collect { |vendor| vendor.name.downcase }.join(" ")
     end
