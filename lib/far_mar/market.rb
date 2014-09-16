@@ -9,7 +9,7 @@ module FarMar
       @city = market_array[3]
       @county = market_array[4]
       @state = market_array[5]
-      @zip = market_array[6].to_i
+      @zip = market_array[6]
 
       @vendors = []
     end
@@ -17,6 +17,8 @@ module FarMar
     def self.all(file_path="./support/markets.csv")
       file_contents = CSV.read(file_path)
       @@markets = file_contents.collect { |market| Market.new(market) }
+      Vendor.all
+      @@markets
     end
 
     def self.find(id)
