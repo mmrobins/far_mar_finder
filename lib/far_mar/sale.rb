@@ -10,26 +10,30 @@ module FarMar
       @product_id = sale_array[4].to_i
     end
 
+    @@sales = nil
     def self.all(file_path="./support/sales.csv")
-      file_contents = CSV.read(file_path)
-      @@sales ||= file_contents.collect { |sale| Sale.new(sale) }
+      if @@sales.nil?
+        file_contents = CSV.read(file_path)
+        @@sales = file_contents.collect { |sale| Sale.new(sale) }
+      end
+      @@sales
     end
 
     def self.find(id)
-      @@sales.find { |sale| sale.id == id }
+      all.find { |sale| sale.id == id }
     end
 
     def self.by_product(product_id)
-      @@sales.find_all { |sale| sale.product_id == product_id }
+      all.find_all { |sale| sale.product_id == product_id }
     end
 
     def self.by_vendor(vendor_id)
-      @@sales.find_all { |sale| sale.vendor_id == vendor_id }
+      all.find_all { |sale| sale.vendor_id == vendor_id }
     end
 
     def self.between(beginning_time, end_time)
       time_range = (beginning_time..end_time)
-      @@sales.find_all { |sale| time_range.include? sale.purchase_time }
+      all.find_all { |sale| time_range.include? sale.purchase_time }
     end
 
     def convert_time(string)

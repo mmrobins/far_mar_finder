@@ -8,9 +8,13 @@ module FarMar
       @vendor_id = product_array[2].to_i
     end
 
+    @@products = nil
     def self.all(file_path="./support/products.csv")
-      file_contents = CSV.read(file_path)
-      @@products ||= file_contents.collect {|product| Product.new(product)}
+      if @@products==nil
+        file_contents = CSV.read(file_path)
+        @@products ||= file_contents.collect {|product| Product.new(product)}
+      end
+      @@products
     end
 
     def vendor
@@ -28,11 +32,11 @@ module FarMar
     end
 
     def self.by_vendor(vendor_id)
-      @@products.find_all { |product| product.vendor_id == vendor_id }
+      all.find_all { |product| product.vendor_id == vendor_id }
     end
 
     def self.find(id)
-      @@products.find { |product| product.id == id }
+      all.find { |product| product.id == id }
     end
   end
 end

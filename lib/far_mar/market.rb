@@ -12,9 +12,13 @@ module FarMar
       @zip = market_array[6]
     end
 
+    @@markets = nil
     def self.all(file_path="./support/markets.csv")
-      file_contents = CSV.read(file_path)
-      @@markets ||= file_contents.collect { |market| Market.new(market) }
+      if @@markets==nil
+        file_contents = CSV.read(file_path)
+        @@markets ||= file_contents.collect { |market| Market.new(market) }
+      end
+      @@markets
     end
 
     def vendors
@@ -23,12 +27,12 @@ module FarMar
     end
 
     def self.find(id)
-      @@markets.find { |market| market.id == id }
+      all.find { |market| market.id == id }
     end
 
     def self.search(search_term)
       search_term.downcase!
-      @@markets.find_all do |market|
+      all.find_all do |market|
         (market.name.downcase.include? search_term) || (market.vendor_names.include? search_term)
       end
     end
