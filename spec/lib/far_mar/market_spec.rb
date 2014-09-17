@@ -57,5 +57,11 @@ describe FarMar::Market do
     it "finds the vendors" do
       expect(market.vendors.first.id).to eq 1
     end
+
+    it "return all products for each vendor in the market" do
+      expect(market.products.count).to eq 13
+    end
+
+
   end
 end
