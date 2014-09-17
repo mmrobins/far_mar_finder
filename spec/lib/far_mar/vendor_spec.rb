@@ -23,21 +23,41 @@ describe FarMar::Vendor do
       expect(FarMar::Vendor.by_market(100).first.name).to eq "Schiller-Ledner"
     end
 
-    # describe "#revenue_hash" do
-    #   it "returns a hash" do
-    #     expect((FarMar::Vendor.revenue_hash).class).to eq Hash
-    #   end
-    #
-    #   it "returns Vendor #2 for revenue 5727"
-    #     expect(((FarMar::Vendor.revenue_hash.key(5727))).id).to eq 2
-    # end
+  #   describe "#revenue_hash" do
+  #     let(:rev_hash) { FarMar::Vendor.revenue_hash }
+  #     it "returns a hash" do
+  #       expect(rev_hash.class).to eq Hash
+  #     end
+   #
+  #     it "returns Vendor #2 for revenue 5727" do
+  #       expect(((rev_hash.key(5727))).id).to eq 2
+  #    end
+  #  end
+   #
+  #   describe "#most_revenue" do
+  #     let(:rev_array) { FarMar::Vendor.most_revenue(3)}
+  #     it "returns an array of vendor objects" do
+  #       expect((rev_array[0]).class).to eq FarMar::Vendor
+  #     end
+   #
+  #     it "returns an array length 3 for top 3" do
+  #       expect(rev_array.length).to eq 3
+  #     end
+   #
+   #
+  #   end
 
-    # describe "#most_revenue" do
-    #   it "returns a vendor object" do
-    #     expect((FarMar::Vendor.most_revenue(1)[0]).class).to eq FarMar::Vendor
-    #   end
-    # end
+    describe "#self.revenue" do
+      let(:all_revenue) {FarMar::Vendor.revenue}
+      let(:date_revenue) { FarMar::Vendor.revenue(Date.new(2013,11,13)) }
+      it "should return an integer" do
+        expect(all_revenue.class).to eq Fixnum
+      end
 
+      it "should return an integer when given a valid date" do
+        expect(date_revenue.class).to eq Fixnum
+      end
+    end
   end
 
   describe "attributes" do
