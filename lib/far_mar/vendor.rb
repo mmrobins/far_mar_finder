@@ -42,6 +42,26 @@ module FarMar
       sales
     end
 
+    def self.most_items(n)
+      sales_hash = sales_count_hash
+      sales_array = sales_hash.values.sort.reverse
+      sales_array = sales_array.slice(0...n)
+      puts sales_array
+      sales_array.collect do |sales_count|
+        vendor_key = sales_hash.key(sales_count)
+        sales_hash.delete(vendor_key)
+        vendor_key
+      end
+    end
+
+    def self.sales_count_hash
+      sales_hash = {}
+      all.each do |vendor|
+        sales_hash[vendor] ||= vendor.sales.count
+      end
+      sales_hash
+    end
+
   #Maybe all self methods should run on .all???
     def self.most_revenue(n)
       rev_hash = revenue_hash
@@ -73,7 +93,6 @@ module FarMar
       all.each do |vendor|
         sum += vendor.revenue(date)
       end
-      puts sum
       sum
     end
   end
