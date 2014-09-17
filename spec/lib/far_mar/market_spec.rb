@@ -6,6 +6,10 @@ describe FarMar::Market do
       expect(FarMar::Market).to respond_to :all
     end
 
+    it "should be an array of objects" do
+      expect(((FarMar::Market.all)).class).to eq Array
+    end
+
     it "'all' should return" do
       expect(FarMar::Market.all.count).to eq 500
     end

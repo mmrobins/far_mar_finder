@@ -1,5 +1,7 @@
+require "./lib/far_mar/aspect.rb"
+
 module FarMar
-  class Market
+  class Market < FarMar::Aspect
     attr_reader :id, :name, :address, :city, :county, :state, :zip
 
     def initialize(market_array)
@@ -10,15 +12,6 @@ module FarMar
       @county = market_array[4]
       @state = market_array[5]
       @zip = market_array[6]
-    end
-
-    @@markets = nil
-    def self.all(file_path="./support/markets.csv")
-      if @@markets==nil
-        file_contents = CSV.read(file_path)
-        @@markets ||= file_contents.collect { |market| Market.new(market) }
-      end
-      @@markets
     end
 
     def vendors

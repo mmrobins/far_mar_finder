@@ -1,5 +1,7 @@
+require "./lib/far_mar/aspect.rb"
+
 module FarMar
-  class Sale
+  class Sale < Aspect
     attr_reader :id, :amount, :purchase_time, :vendor_id, :product_id
 
     def initialize(sale_array)
@@ -8,15 +10,6 @@ module FarMar
       @purchase_time = convert_time(sale_array[2])
       @vendor_id = sale_array[3].to_i
       @product_id = sale_array[4].to_i
-    end
-
-    @@sales = nil
-    def self.all(file_path="./support/sales.csv")
-      if @@sales.nil?
-        file_contents = CSV.read(file_path)
-        @@sales = file_contents.collect { |sale| Sale.new(sale) }
-      end
-      @@sales
     end
 
     def self.find(id)

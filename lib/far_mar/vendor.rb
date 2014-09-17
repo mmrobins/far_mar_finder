@@ -1,5 +1,7 @@
+require "./lib/far_mar/aspect.rb"
+
 module FarMar
-  class Vendor
+  class Vendor < Aspect
     attr_reader :id, :name, :no_of_employees, :market_id
 
     def initialize(vendor_array)
@@ -7,15 +9,6 @@ module FarMar
       @name = vendor_array[1]
       @no_of_employees = vendor_array[2].to_i
       @market_id = vendor_array[3].to_i
-    end
-
-    @@vendors = nil
-    def self.all(file_path="./support/vendors.csv")
-      if @@vendors == nil
-        file_contents = CSV.read(file_path)
-        @@vendors ||= file_contents.collect { |vendor| Vendor.new(vendor)}
-      end
-      @@vendors
     end
 
     def market
@@ -61,7 +54,6 @@ module FarMar
       sales_hash
     end
 
-  #Maybe all self methods should run on .all???
     def self.most_revenue(n)
       rev_hash = revenue_hash
       revenue_array = rev_hash.values.sort.reverse

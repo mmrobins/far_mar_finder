@@ -1,20 +1,13 @@
+require "./lib/far_mar/aspect.rb"
+
 module FarMar
-  class Product
+  class Product < Aspect
     attr_reader :id, :name, :vendor_id
 
     def initialize(product_array)
       @id = product_array[0].to_i
       @name = product_array[1]
       @vendor_id = product_array[2].to_i
-    end
-
-    @@products = nil
-    def self.all(file_path="./support/products.csv")
-      if @@products==nil
-        file_contents = CSV.read(file_path)
-        @@products ||= file_contents.collect {|product| Product.new(product)}
-      end
-      @@products
     end
 
     def vendor
