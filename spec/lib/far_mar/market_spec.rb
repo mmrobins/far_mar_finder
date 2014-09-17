@@ -18,6 +18,26 @@ describe FarMar::Market do
       expect(FarMar::Market).to respond_to :search
     end
 
+    it "should return market #1 for a zip search of 97202" do
+      expect(FarMar::Market.find_by_zip("97202").id).to eq 1
+    end
+
+    it "returns market 1 for the address '30th and Burnside'" do
+      expect(FarMar::Market.find_by_address('30th and Burnside').id).to eq 1
+    end
+
+    it "finds market #1 for city PORTLAND" do
+      expect(FarMar::Market.find_by_city("PORTLAND").id).to eq 1
+    end
+
+    it "finds market #1 for county 'Multnomah'" do
+      expect(FarMar::Market.find_by_county("multNOmah").id).to eq 1
+    end
+
+    it "finds market #1 for state 'Oregon'" do
+      expect(FarMar::Market.find_by_state("oreGON").id).to eq 1
+    end
+
     # it "'search('school') should return array of 3" do
     #   school_results = FarMar::Market.search("school")
     #   expect(school_results.count).to eq 3

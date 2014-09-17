@@ -66,5 +66,45 @@ module FarMar
     def products
       vendors.collect { |vendor| vendor.products }
     end
+
+    def self.find_by_address(search_term)
+      search_term.downcase!
+      all.find do |object|
+        unless object.address == nil
+          object.address.downcase == search_term
+        end
+      end
+    end
+
+    def self.find_by_city(search_term)
+      search_term.downcase!
+      all.find do |object|
+        unless object.city == nil
+          object.city.downcase == search_term
+        end
+      end
+    end
+
+    def self.find_by_county(search_term)
+      search_term.downcase!
+      all.find do |object|
+        unless object.county == nil
+          object.county.downcase == search_term
+        end
+      end
+    end
+
+    def self.find_by_state(search_term)
+      search_term.downcase!
+      all.find do |object|
+        unless object.state == nil
+          object.state.downcase == search_term
+        end
+      end
+    end
+
+    def self.find_by_zip(search_term)
+      all.find { |object| object.zip == search_term }
+    end
   end
 end
