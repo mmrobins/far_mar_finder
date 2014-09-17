@@ -36,12 +36,12 @@ module FarMar
     end
 
     def products
-      FarMar::Product.all.select { |p| p.vendor_id == @id}
+      FarMar::Product.all.select { |p| p.vendor_id == @id }
     end
 
     def revenue
-      all_sales = sales.collect {|s| s.amount}
-      all_sales.inject(0) { |sum, i| sum + i}
+      all_sales = sales.collect { |s| s.amount }
+      all_sales.inject(0) { |sum, i| sum + i }
     end
 
   end

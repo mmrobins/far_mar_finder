@@ -40,16 +40,16 @@ module FarMar
       return s
     end
 
-    def self.search_result(query)
-      search
-    end
-
     def vendors
       FarMar::Vendor.all.select { |vendor| vendor.market_id == @id }
     end
 
     def products
       vendors.collect { |v| v.products }.flatten
+    end
+
+    def prefered_vendor
+      vendors.collect { |v| v.revenue }.max
     end
 
   end

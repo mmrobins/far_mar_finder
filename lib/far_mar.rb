@@ -29,7 +29,7 @@ require_relative 'far_mar/sale'
 #puts "This vendor's revenue is: #{FarMar::Vendor.find(1).revenue}"
  # puts FarMar::Product.by_vendor(17).count
  # puts FarMar::Product.by_vendor(18).count
-puts FarMar::Market.search('School').inspect
+# puts FarMar::Market.search('School').inspect
 #a = FarMar::Market.all + FarMar::Vendor.all
 #puts FarMar::Market.all.count
 #puts FarMar::Vendor.all.count
@@ -37,3 +37,5 @@ puts FarMar::Market.search('School').inspect
 
 #markets_vendors = FarMar::Vendor.all.concat(FarMar::Market.all)
 #puts markets_vendors.count
+
+puts FarMar::Market.find(1).prefered_vendor

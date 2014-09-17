@@ -27,6 +27,7 @@ describe FarMar::Market do
     it "returns market name based on a search term" do
       expect(FarMar::Market.search('school')[0].name).to eq "Fox School Farmers Market"
     end
+
   end
 
   describe "attributes" do
@@ -74,6 +75,12 @@ describe FarMar::Market do
       expect(market.products.count).to eq 13
     end
 
+    it 'responds to prefered_vendor' do
+      expect(market).to respond_to :prefered_vendor
+    end
 
+    it 'returns highest revenue' do
+      expect(market.prefered_vendor.name).to eq " "
+    end
   end
 end
