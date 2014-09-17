@@ -1,5 +1,9 @@
 module FarMar
   class Product
+    # @@products = CSV.read("support/products.csv").map do |p|
+    #   Product.new(p)
+    # end
+    #
     attr_accessor :id, :name, :vendor_id
 
     def initialize(p_array)
@@ -9,17 +13,17 @@ module FarMar
     end
 
     def self.all
-      @products = CSV.read("support/products.csv").map do |p|
+      @products ||= CSV.read("support/products.csv").map do |p|
         Product.new(p)
       end
     end
 
     def self.find(id)
-      @products.find { |p| p.id == id }
+      all.find { |p| p.id == id }
     end
 
     def self.by_vendor(vendor_id)
-      @products.select { |p| p.vendor_id == vendor_id }
+      all.select { |p| p.vendor_id == vendor_id }
 
     end
 
