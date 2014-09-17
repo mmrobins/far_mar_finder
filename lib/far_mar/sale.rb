@@ -28,6 +28,14 @@ module FarMar
       DateTime.parse(string)
     end
 
+    def self.find_by_amount(search_amount)
+      all.find { |object| object.amount == search_amount }
+    end
+
+    def self.find_all_by_date(search_date) #must be date object
+      all.find_all { |object| object.purchase_time === search_date }
+    end
+
     def vendor
       Vendor.all
       Vendor.find(@vendor_id)

@@ -13,6 +13,15 @@ describe FarMar::Sale do
     it "responds to 'find'" do
       expect(FarMar::Sale).to respond_to :find
     end
+
+    it "searches by amount" do
+      expect(FarMar::Sale.find_by_amount(1995).id).to eq 38
+    end
+
+    it "finds all sales on a certain date" do
+      expect((FarMar::Sale.find_all_by_date(Date.new(2013,11,13))).count).to eq 669
+    end
+
   end
 
   describe "attributes" do
