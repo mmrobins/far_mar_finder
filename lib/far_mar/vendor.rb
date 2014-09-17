@@ -77,10 +77,6 @@ module FarMar
       all.find_all { |vendor| vendor.market_id == market_id }
     end
 
-    def self.find(id)
-      all.find { |vendor| vendor.id == id }
-    end
-
     def self.revenue(date=nil)
       sum = 0
       all.each do |vendor|

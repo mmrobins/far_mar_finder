@@ -12,10 +12,6 @@ module FarMar
       @product_id = sale_array[4].to_i
     end
 
-    def self.find(id)
-      all.find { |sale| sale.id == id }
-    end
-
     def self.by_product(product_id)
       all.find_all { |sale| sale.product_id == product_id }
     end

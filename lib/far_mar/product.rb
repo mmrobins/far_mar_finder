@@ -28,10 +28,6 @@ module FarMar
       all.find_all { |product| product.vendor_id == vendor_id }
     end
 
-    def self.find(id)
-      all.find { |product| product.id == id }
-    end
-
     def self.most_revenue(n)
       rev_hash = revenue_hash
       revenue_array = rev_hash.values.sort.reverse

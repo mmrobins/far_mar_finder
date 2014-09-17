@@ -15,12 +15,8 @@ module FarMar
     end
 
     def vendors
-      Vendor.all # next step: not loading this a million times
+      Vendor.all
       Vendor.by_market(@id)
-    end
-
-    def self.find(id)
-      all.find { |market| market.id == id }
     end
 
     def self.search(search_term)
