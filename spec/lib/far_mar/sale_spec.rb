@@ -13,6 +13,14 @@ describe FarMar::Sale do
     it "responds to 'find'" do
       expect(FarMar::Sale).to respond_to :find
     end
+
+    it "responds to 'between'" do
+      expect(FarMar::Sale).to respond_to :between
+    end
+
+    it "returns number of sales between two given times" do
+      expect(FarMar::Sale.between("November 13, 2013 08:32", "November 13, 2013 08:36")).to eq 6
+    end
   end
 
   describe "attributes" do
