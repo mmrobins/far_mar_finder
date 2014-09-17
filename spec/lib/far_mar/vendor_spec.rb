@@ -23,7 +23,8 @@ describe FarMar::Vendor do
       expect(FarMar::Vendor.by_market(100).first.name).to eq "Schiller-Ledner"
     end
 
-  #   describe "#self.revenue_hash" do
+
+  #   describe "#revenue_hash" do
   #     let(:rev_hash) { FarMar::Vendor.revenue_hash }
   #     it "returns a hash" do
   #       expect(rev_hash.class).to eq Hash
@@ -34,7 +35,8 @@ describe FarMar::Vendor do
   #    end
   #  end
    #
-  #   describe "#self.most_revenue" do
+
+  #   describe "#most_revenue" do
   #     let(:rev_array) { FarMar::Vendor.most_revenue(3)}
   #     it "returns an array of vendor objects" do
   #       expect((rev_array[0]).class).to eq FarMar::Vendor
@@ -70,6 +72,7 @@ describe FarMar::Vendor do
     #     expect(date_revenue.class).to eq Fixnum
     #   end
     # end
+
   end
 
   describe "attributes" do
