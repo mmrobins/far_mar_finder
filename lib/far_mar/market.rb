@@ -26,6 +26,12 @@ module FarMar
       all.find { |m| m.id == id }
     end
 
+    def self.search(query)
+      #markets_vendors = FarMar::Vendor.all + all
+      markets_vendors = FarMar::Vendor.all.concat(all)
+      markets_vendors.select {|o| o.name.downcase.include? query.downcase}
+    end
+
     def vendors
       FarMar::Vendor.all.select { |vendor| vendor.market_id == @id }
     end
