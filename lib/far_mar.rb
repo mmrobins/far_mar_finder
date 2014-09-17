@@ -1,5 +1,6 @@
 require 'csv'
 require 'time'
+require 'date'
 
 # This file is to require all of our dependencies (each of the classes we make)
 require_relative 'far_mar/market'
@@ -37,8 +38,10 @@ require_relative 'far_mar/sale'
 
 #markets_vendors = FarMar::Vendor.all.concat(FarMar::Market.all)
 #puts markets_vendors.count
-puts FarMar::Market.find(1).prefered_vendor
-puts FarMar::Market.find(1).prefered_vendor.name
-
-puts FarMar::Market.find(1).prefered_vendor.id
-puts FarMar::Vendor.find(5).revenue
+# puts FarMar::Market.find(1).prefered_vendor
+# puts FarMar::Market.find(1).prefered_vendor.name
+#
+# puts FarMar::Market.find(1).prefered_vendor.id
+# puts FarMar::Vendor.find(5).revenue
+#
+puts FarMar::Market.find(1).prefered_vendor_by_date("November 9, 2013").name

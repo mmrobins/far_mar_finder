@@ -53,6 +53,40 @@ module FarMar
       vendors.find { |v| v.revenue == max_rev}
     end
 
+    def prefered_vendor_by_date(date)
+      #date = Time.parse(date)
+      vendors.sort_by {|v| v.sales_for_day(date)}.last
+
+
+
+
+
+
+
+
+
+      # date = Time.parse(date)
+      # end_time = date + 1
+      # FarMar::Sale.all.purchase_time.date == date
+      #
+      # #vendors.select do {|v| v.sales}
+      # FarMar::Sale.between(date, )
+      #
+      # sales_on_date = vendors.select do |v|
+      #    v.sales.select {|s| s.purchase_time.day == date.day && s.purchase_time.mon == date.mon}
+      #  end
+      #sales_on_date.find { |v| v.revenue == max_rev}
+    end
+
+    def worst_vendor
+      min_rev = vendors.collect { |v| v.revenue }.min
+      vendors.find { |v| v.revenue == min_rev}
+    end
+
+    def worst_vendor_by_date(date)
+
+    end
+
   end
 end
 

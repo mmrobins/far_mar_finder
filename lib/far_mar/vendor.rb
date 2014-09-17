@@ -44,6 +44,15 @@ module FarMar
       all_sales.inject(0) { |sum, i| sum + i }
     end
 
+    def sales_for_day(date)
+      date = Time.parse(date)
+      amount = 0
+      all_sales_for_day = sales.select {|s| s.purchase_time.day == date.day && s.purchase_time.month == date.month}
+      all_sales_for_day.map {|s| amount += s.amount}
+      return amount
+    end
+
+
   end
 
 end

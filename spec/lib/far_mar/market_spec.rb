@@ -79,8 +79,33 @@ describe FarMar::Market do
       expect(market).to respond_to :prefered_vendor
     end
 
-    it 'returns highest revenue' do
+    it 'returns vendor with highest revenue' do
       expect(market.prefered_vendor.name).to eq "Reynolds, Schmitt and Klocko"
     end
+
+    it "responds to prefered_vendor_by_date(date)" do
+      expect(market).to respond_to :prefered_vendor_by_date
+    end
+
+    it "returns vendor with highest revenue from a specific date" do
+      expect(market.prefered_vendor_by_date("November 10, 2013").name).to eq "Breitenberg Inc"
+    end
+
+    it "responds to worst_vendor" do
+      expect(market).to respond_to :worst_vendor
+    end
+
+    it "returns vendor with lowest revenue" do
+      expect(market.worst_vendor.name).to eq "Zulauf and Sons"
+    end
+
+    it "responds to worst_vendor_by_date(date)" do
+      expect(market).to respond_to :worst_vendor_by_date
+    end
+
+    it "returns vendor with lowest revenue from a specific date" do
+      expect(market.worst_vendor_by_date("November 10, 2013").name).to eq " "
+    end
+
   end
 end
