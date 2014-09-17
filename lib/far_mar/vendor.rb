@@ -46,7 +46,6 @@ module FarMar
       sales_hash = sales_count_hash
       sales_array = sales_hash.values.sort.reverse
       sales_array = sales_array.slice(0...n)
-      puts sales_array
       sales_array.collect do |sales_count|
         vendor_key = sales_hash.key(sales_count)
         sales_hash.delete(vendor_key)
@@ -68,7 +67,9 @@ module FarMar
       revenue_array = rev_hash.values.sort.reverse
       revenue_array = revenue_array.slice(0...n)
       revenue_array.collect do |rev_amount|
-        rev_hash.key(rev_amount)
+        vendor_key = rev_hash.key(rev_amount)
+        rev_hash.delete(vendor_key)
+        vendor_key
       end
     end
 

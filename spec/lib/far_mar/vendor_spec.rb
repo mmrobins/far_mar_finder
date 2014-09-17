@@ -50,13 +50,13 @@ describe FarMar::Vendor do
   #   end
 
     describe "#self.most_items" do
-      let(:sales_array) { FarMar::Vendor.most_items(50) }
+      let(:sales_array) { FarMar::Vendor.most_items(3) }
       # it "returns an array of vendor objects" do
       #   expect((sales_array[0]).class).to eq FarMar::Vendor
       # end
 
       it "returns an array length 3 for top 3" do
-        expect(sales_array.length).to eq 50
+        expect(sales_array.length).to eq 3
       end
     end
 
