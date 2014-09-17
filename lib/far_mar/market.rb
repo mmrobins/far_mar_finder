@@ -27,12 +27,11 @@ module FarMar
     end
 
     def vendors
-      FarMar::Vendor.all
+      FarMar::Vendor.all.select { |vendor| vendor.market_id == @id }
     end
 
     def products
-      v = vendors.select { |vendor| vendor.market_id = @id }
-      p = v.collect { |v| v.products }
+      vendors.collect { |v| v.products }.flatten
     end
 
   end

@@ -17,4 +17,15 @@ require_relative 'far_mar/sale'
 
 # puts sorted
 
-puts FarMar::Market.all[0].products.count
+# puts FarMar::Market.all[9].products.count
+
+# puts FarMar::Market.find(5).vendors.count
+
+# puts FarMar::Vendor.all[16].products.count
+#
+# puts FarMar::Vendor.all[17].products.count
+#
+puts FarMar::Market.find(5).products.count
+
+ # puts FarMar::Product.by_vendor(17).count
+ # puts FarMar::Product.by_vendor(18).count
