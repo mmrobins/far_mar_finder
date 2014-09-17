@@ -1,7 +1,6 @@
-require "./lib/far_mar/aspect.rb"
-
 module FarMar
   class Market < FarMar::Aspect
+    set_path "./support/markets.csv"
     attr_reader :id, :name, :address, :city, :county, :state, :zip
 
     def initialize(market_array)

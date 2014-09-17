@@ -1,7 +1,6 @@
-require "./lib/far_mar/aspect.rb"
-
 module FarMar
   class Vendor < Aspect
+    set_path "./support/vendors.csv"
     attr_reader :id, :name, :no_of_employees, :market_id
 
     def initialize(vendor_array)
