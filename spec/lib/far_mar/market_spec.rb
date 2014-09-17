@@ -80,7 +80,7 @@ describe FarMar::Market do
     end
 
     it 'returns highest revenue' do
-      expect(market.prefered_vendor.name).to eq " "
+      expect(market.prefered_vendor.name).to eq "Reynolds, Schmitt and Klocko"
     end
   end
 end

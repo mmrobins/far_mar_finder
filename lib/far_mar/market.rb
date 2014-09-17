@@ -49,7 +49,8 @@ module FarMar
     end
 
     def prefered_vendor
-      vendors.collect { |v| v.revenue }.max
+      max_rev = vendors.collect { |v| v.revenue }.max
+      vendors.find { |v| v.revenue == max_rev}
     end
 
   end
