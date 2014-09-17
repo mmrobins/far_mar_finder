@@ -20,8 +20,12 @@ describe FarMar::Market do
       expect(FarMar::Market).to respond_to :search
     end
 
-    it "returns market or vendor results based on a search term" do
+    it "returns market instance results based on a search term" do
       expect(FarMar::Market.search('school').count).to eq 3
+    end
+
+    it "returns market name based on a search term" do
+      expect(FarMar::Market.search('school')[0].name).to eq "Fox School Farmers Market"
     end
   end
 

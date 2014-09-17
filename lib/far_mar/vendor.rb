@@ -40,8 +40,6 @@ module FarMar
     end
 
     def revenue
-
-      #all_sales = sales
       all_sales = sales.collect {|s| s.amount}
       all_sales.inject(0) { |sum, i| sum + i}
     end

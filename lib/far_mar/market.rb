@@ -28,8 +28,20 @@ module FarMar
 
     def self.search(query)
       #markets_vendors = FarMar::Vendor.all + all
-      markets_vendors = FarMar::Vendor.all.concat(all)
-      markets_vendors.select {|o| o.name.downcase.include? query.downcase}
+      s =[]
+      FarMar::Vendor.all.select { |o| o.name.downcase.include? query.downcase }.each do |v|
+        s << v.market
+      end
+
+      all.select { |o| o.name.downcase.include? query.downcase }.each do |m|
+        s << m
+      end
+
+      return s
+    end
+
+    def self.search_result(query)
+      search
     end
 
     def vendors
