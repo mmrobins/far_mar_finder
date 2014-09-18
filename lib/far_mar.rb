@@ -43,5 +43,14 @@ require_relative 'far_mar/sale'
 #
 # puts FarMar::Market.find(1).prefered_vendor.id
 # puts FarMar::Vendor.find(5).revenue
-#
-puts FarMar::Market.find(1).prefered_vendor_by_date("November 9, 2013").name
+puts "Worst Vendor on November 10, 2013"
+puts FarMar::Market.find(1).worst_vendor_by_date("November 10, 2013")
+puts FarMar::Market.find(1).worst_vendor_by_date("November 10, 2013").name
+puts FarMar::Market.find(1).worst_vendor_by_date("November 10, 2013").id
+puts FarMar::Market.find(1).worst_vendor_by_date("November 10, 2013").revenue
+puts
+puts "Best Vendor on November 10, 2013"
+puts FarMar::Market.find(1).prefered_vendor_by_date("November 10, 2013")
+puts "Name is #{FarMar::Market.find(1).prefered_vendor_by_date("November 10, 2013").name}"
+puts "ID is #{FarMar::Market.find(1).prefered_vendor_by_date("November 10, 2013").id}"
+puts "Revenue is: #{FarMar::Market.find(1).prefered_vendor_by_date("November 10, 2013").revenue}"

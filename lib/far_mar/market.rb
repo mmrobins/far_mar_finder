@@ -27,7 +27,6 @@ module FarMar
     end
 
     def self.search(query)
-      #markets_vendors = FarMar::Vendor.all + all
       s =[]
       FarMar::Vendor.all.select { |o| o.name.downcase.include? query.downcase }.each do |v|
         s << v.market
@@ -56,17 +55,9 @@ module FarMar
     def prefered_vendor_by_date(date)
       #date = Time.parse(date)
       vendors.sort_by {|v| v.sales_for_day(date)}.last
+    end
 
 
-
-
-
-
-
-
-
-      # date = Time.parse(date)
-      # end_time = date + 1
       # FarMar::Sale.all.purchase_time.date == date
       #
       # #vendors.select do {|v| v.sales}
@@ -76,7 +67,7 @@ module FarMar
       #    v.sales.select {|s| s.purchase_time.day == date.day && s.purchase_time.mon == date.mon}
       #  end
       #sales_on_date.find { |v| v.revenue == max_rev}
-    end
+
 
     def worst_vendor
       min_rev = vendors.collect { |v| v.revenue }.min
@@ -84,7 +75,7 @@ module FarMar
     end
 
     def worst_vendor_by_date(date)
-
+      vendors.sort_by {|v| v.sales_for_day(date)}.first
     end
 
   end

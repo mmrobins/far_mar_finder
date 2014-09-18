@@ -104,7 +104,7 @@ describe FarMar::Market do
     end
 
     it "returns vendor with lowest revenue from a specific date" do
-      expect(market.worst_vendor_by_date("November 10, 2013").name).to eq " "
+      expect(market.worst_vendor_by_date("November 10, 2013").name).to eq "Zulauf and Sons"
     end
 
   end
