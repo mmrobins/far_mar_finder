@@ -27,8 +27,12 @@ module FarMar
       all.select { |v| v.market_id == market_id }
     end
 
-    def self.most_revenue
-      all.sort_by {|v| v.revenue}.last
+    def self.most_revenue(n)
+      all.sort_by {|v| v.revenue}.pop(n).reverse
+    end
+
+    def self.most_items(n)
+
     end
 
     def market
