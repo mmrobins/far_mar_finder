@@ -67,4 +67,6 @@ require_relative 'far_mar/sale'
 # puts FarMar::Vendor.revenue("November 10, 2013")
 
 #puts FarMar::Product.most_revenue(10)
-FarMar::Product.most_revenue(10).each {|v| puts v.name + " count:  " + v.revenue.to_s}
+#FarMar::Product.most_revenue(10).each {|v| puts v.name + " count:  " + v.revenue.to_s}
+#puts FarMar::Market.find(1).city
+puts FarMar::Market.find_by_city("Pinecrest").city

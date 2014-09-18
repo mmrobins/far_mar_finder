@@ -7,7 +7,7 @@ module FarMar
        @id = m_array[0].to_i
        @name = m_array[1]
        @address = m_array[2]
-       @city = m_array[3]
+       @city = m_array[3] || ""
        @county = m_array[4]
        @state= m_array[5]
        @zip = m_array[6]
@@ -21,6 +21,19 @@ module FarMar
 
     def self.find(id)
       all.find { |m| m.id == id }
+    end
+
+    def self.find_by_name(name)
+      all.find { |m| m.name.downcase.include? name.downcase}
+    end
+
+    def self.find_by_city(city)
+      all.find do |m|
+        # if m.city == nil
+        #   puts m.id
+        # end
+        m.city.downcase == city.downcase
+      end
     end
 
     def self.search(query)
