@@ -53,7 +53,6 @@ module FarMar
       vendors.sort_by {|v| v.revenue_by_date(date)}.last
     end
 
-
       # FarMar::Sale.all.purchase_time.date == date
       #
       # #vendors.select do {|v| v.sales}

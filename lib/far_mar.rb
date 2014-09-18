@@ -59,8 +59,12 @@ require_relative 'far_mar/sale'
 #puts FarMar::Vendor.most_revenue.name
 #puts FarMar::Vendor.find(2590).name
 #puts FarMar::Vendor.find(2590).revenue
-# puts FarMar::Vendor.most_items(5)
-# FarMar::Vendor.most_items(5).each {|v| puts v.name + ":  " + v.sales.count.to_s}
+ # puts FarMar::Vendor.most_items(10)
+ #FarMar::Vendor.most_items(100).each {|v| puts v.name + " count:  " + v.sales.count.to_s + " id: " + v.id.to_s }
+# puts FarMar::Vendor.find(2583).sales.count
 
-puts FarMar::Vendor.find(1).revenue_by_date("November 10, 2013")
-puts FarMar::Vendor.revenue("November 10, 2013")
+# puts FarMar::Vendor.find(1).revenue_by_date("November 10, 2013")
+# puts FarMar::Vendor.revenue("November 10, 2013")
+
+#puts FarMar::Product.most_revenue(10)
+FarMar::Product.most_revenue(10).each {|v| puts v.name + " count:  " + v.revenue.to_s}

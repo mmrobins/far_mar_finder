@@ -24,8 +24,13 @@ module FarMar
 
     end
 
-    def self.most_revenue(date)
-      
+    def self.most_revenue(n)
+      all.sort_by { |p| p.revenue }.pop(n).reverse
+    end
+
+    def revenue
+      r = sales.collect { |s| s.amount }
+      r.inject(0) { |sum, i| sum + i }
     end
 
     def vendor
