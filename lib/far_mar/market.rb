@@ -50,7 +50,7 @@ module FarMar
     end
 
     def prefered_vendor_by_date(date)
-      vendors.sort_by {|v| v.sales_for_day(date)}.last
+      vendors.sort_by {|v| v.revenue_by_date(date)}.last
     end
 
 
@@ -71,7 +71,7 @@ module FarMar
     end
 
     def worst_vendor_by_date(date)
-      vendors.sort_by {|v| v.sales_for_day(date)}.first
+      vendors.sort_by {|v| v.revenue_by_date(date)}.first
     end
 
   end
