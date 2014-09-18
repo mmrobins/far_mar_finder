@@ -1,8 +1,5 @@
 module FarMar
   class Sale
-    # @@sales = CSV.read("support/sales.csv").map do |s|
-    #   Sale.new(s)
-    # end
 
     attr_accessor :id, :amount, :purchase_time, :vendor_id, :product_id
 

@@ -1,9 +1,6 @@
 module FarMar
   class Product
-    # @@products = CSV.read("support/products.csv").map do |p|
-    #   Product.new(p)
-    # end
-    #
+
     attr_accessor :id, :name, :vendor_id
 
     def initialize(p_array)

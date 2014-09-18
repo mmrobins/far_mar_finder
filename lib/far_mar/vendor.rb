@@ -1,8 +1,5 @@
 module FarMar
   class Vendor
-    # @@vendors = CSV.read("support/vendors.csv").map do |v|
-    #   Vendor.new(v)
-    # end
 
     attr_accessor :id, :name, :no_of_employees, :market_id
 
@@ -32,7 +29,8 @@ module FarMar
     end
 
     def self.most_items(n)
-
+      top_vendor_list = all.sort_by {|v| v.sales.count }.pop(n).reverse
+      top_vendor_list.each { |v| v.sales}.flatten
     end
 
     def market

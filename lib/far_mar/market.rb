@@ -1,8 +1,5 @@
 module FarMar
   class Market
-    # @@markets = CSV.read("support/markets.csv").map do |m|
-    #   Market.new(m)
-    # end
 
     attr_accessor :id, :name, :address, :city, :county, :state, :zip
 
@@ -53,7 +50,6 @@ module FarMar
     end
 
     def prefered_vendor_by_date(date)
-      #date = Time.parse(date)
       vendors.sort_by {|v| v.sales_for_day(date)}.last
     end
 
@@ -80,7 +76,3 @@ module FarMar
 
   end
 end
-
-#To use anything we've defined in this class, use this:
-#FarMar::Market
-#FarMar::Sale
