@@ -33,6 +33,10 @@ module FarMar
       top_vendor_list.each { |v| v.sales}.flatten
     end
 
+    def self.revenue(date)
+
+    end
+
     def market
       FarMar::Market.all.find { |m| m.id == @market_id }
     end
@@ -48,6 +52,10 @@ module FarMar
     def revenue
       all_sales = sales.collect { |s| s.amount }
       all_sales.inject(0) { |sum, i| sum + i }
+    end
+
+    def revenue_by_date(date)
+      
     end
 
     def sales_for_day(date)

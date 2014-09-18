@@ -38,6 +38,10 @@ describe FarMar::Vendor do
     it "returns the vendors with the most items" do
       expect(FarMar::Vendor.most_items(5)[3].name).to eq "Sipes Inc"
     end
+
+    it "responds to 'revenue'" do
+      expect(FarMar::Vendor).to respond_to :revenue
+    end
   end
 
   describe "attributes" do
@@ -89,6 +93,9 @@ describe FarMar::Vendor do
       expect(vendor.revenue).to eq 38259
     end
 
+    it "responds to revenue_by_date" do
+      expect(vendor).to respond_to :revenue_by_date
+    end
   end
 
 end

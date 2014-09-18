@@ -24,6 +24,10 @@ module FarMar
 
     end
 
+    def self.most_revenue(date)
+      
+    end
+
     def vendor
       FarMar::Vendor.all.find { |v| v.id == @vendor_id }
     end

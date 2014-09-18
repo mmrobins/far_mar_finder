@@ -22,6 +22,10 @@ describe FarMar::Product do
     it "find the first product by market 1" do
       expect(FarMar::Product.by_vendor(1).first.name).to eq "Dry Beets"
     end
+
+    it "responds to most_revenue(date)" do
+      expect(FarMar::Product).to respond_to :most_revenue
+    end
   end
 
   describe "attributes" do
