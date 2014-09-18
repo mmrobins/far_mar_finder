@@ -24,7 +24,11 @@ describe FarMar::Vendor do
     end
 
     it "responds to 'most_revenue'" do
-      expect(FarMar::Vendor)
+      expect(FarMar::Vendor).to respond_to :most_revenue
+    end
+
+    it "returns the vendor with the most_revenue" do
+      expect(FarMar::Vendor.most_revenue.name).to eq "Swaniawski-Schmeler"
     end
   end
 
