@@ -62,5 +62,5 @@ require_relative 'far_mar/sale'
 # puts FarMar::Vendor.most_items(5)
 # FarMar::Vendor.most_items(5).each {|v| puts v.name + ":  " + v.sales.count.to_s}
 
-#puts FarMar::Vendor.find(1).sales_for_day("November 10, 2013")
+puts FarMar::Vendor.find(1).revenue_by_date("November 10, 2013")
 puts FarMar::Vendor.revenue("November 10, 2013")

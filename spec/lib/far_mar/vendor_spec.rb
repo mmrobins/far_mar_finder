@@ -39,9 +39,14 @@ describe FarMar::Vendor do
       expect(FarMar::Vendor.most_items(5)[3].name).to eq "Sipes Inc"
     end
 
-    it "responds to 'revenue'" do
+    it "responds to 'revenue(date)'" do
       expect(FarMar::Vendor).to respond_to :revenue
     end
+
+    it "returns the revenue for all the vendors for a specific date" do
+      expect(FarMar::Vendor.revenue("November 10, 2013")).to eq 9119618
+    end
+
   end
 
   describe "attributes" do
@@ -95,6 +100,10 @@ describe FarMar::Vendor do
 
     it "responds to revenue_by_date" do
       expect(vendor).to respond_to :revenue_by_date
+    end
+
+    it "returns revenue for a specific date" do
+      expect(vendor.revenue_by_date("November 10, 2013")).to eq 6702
     end
   end
 
