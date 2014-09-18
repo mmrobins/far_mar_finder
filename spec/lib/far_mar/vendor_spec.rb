@@ -22,6 +22,10 @@ describe FarMar::Vendor do
     it "find the first vendor by market 1" do
       expect(FarMar::Vendor.by_market(100).first.name).to eq "Schiller-Ledner"
     end
+
+    it "responds to 'most_revenue'" do
+      expect(FarMar::Vendor)
+    end
   end
 
   describe "attributes" do

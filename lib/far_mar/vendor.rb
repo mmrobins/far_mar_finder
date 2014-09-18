@@ -27,6 +27,10 @@ module FarMar
       all.select { |v| v.market_id == market_id }
     end
 
+    def self.most_revenue
+      all.sort_by {|v| v.revenue}.last
+    end
+
     def market
       FarMar::Market.all.find { |m| m.id == @market_id }
     end
