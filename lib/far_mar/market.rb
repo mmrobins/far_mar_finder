@@ -1,16 +1,16 @@
 module FarMar
+  # This creates a market class
   class Market
-
     attr_accessor :id, :name, :address, :city, :county, :state, :zip
 
     def initialize(m_array)
-       @id = m_array[0].to_i
-       @name = m_array[1]
-       @address = m_array[2]
-       @city = m_array[3] || ""
-       @county = m_array[4]
-       @state= m_array[5]
-       @zip = m_array[6]
+      @id = m_array[0].to_i
+      @name = m_array[1]
+      @address = m_array[2]
+      @city = m_array[3] || ""
+      @county = m_array[4]
+      @state = m_array[5]
+      @zip = m_array[6]
     end
 
     def self.all
@@ -24,7 +24,7 @@ module FarMar
     end
 
     def self.find_by_name(name)
-      all.find { |m| m.name.downcase.include? name.downcase}
+      all.find { |m| m.name.downcase.include? name.downcase }
     end
 
     def self.find_by_city(city)
@@ -37,7 +37,7 @@ module FarMar
     end
 
     def self.search(query)
-      s =[]
+      s = []
       FarMar::Vendor.all.select { |o| o.name.downcase.include? query.downcase }.each do |v|
         s << v.market
       end
@@ -45,8 +45,6 @@ module FarMar
       all.select { |o| o.name.downcase.include? query.downcase }.each do |m|
         s << m
       end
-
-      return s
     end
 
     def vendors
@@ -59,11 +57,11 @@ module FarMar
 
     def prefered_vendor
       max_rev = vendors.collect { |v| v.revenue }.max
-      vendors.find { |v| v.revenue == max_rev}
+      vendors.find { |v| v.revenue == max_rev }
     end
 
     def prefered_vendor_by_date(date)
-      vendors.sort_by {|v| v.revenue_by_date(date)}.last
+      vendors.sort_by {|v| v.revenue_by_date(date) }.last
     end
 
       # FarMar::Sale.all.purchase_time.date == date
@@ -79,11 +77,11 @@ module FarMar
 
     def worst_vendor
       min_rev = vendors.collect { |v| v.revenue }.min
-      vendors.find { |v| v.revenue == min_rev}
+      vendors.find { |v| v.revenue == min_rev }
     end
 
     def worst_vendor_by_date(date)
-      vendors.sort_by {|v| v.revenue_by_date(date)}.first
+      vendors.sort_by { |v| v.revenue_by_date(date) }.first
     end
 
   end
