@@ -43,7 +43,7 @@ module FarMar
 
     def self.revenue(date)
       total_sales = all.collect { |v| v.revenue_by_date(date) }
-      total_sales.inject(0) { |sum, i| sum + i}
+      total_sales.inject(0) { |sum, i| sum + i }
     end
 
     def market
@@ -67,7 +67,7 @@ module FarMar
       date = Time.parse(date)
       total_rev = 0
       all_sales_for_day = sales.select {|s| s.purchase_time.day == date.day && s.purchase_time.month == date.month }
-      all_sales_for_day.map {|s| total_rev += s.amount}
+      all_sales_for_day.map {|s| total_rev += s.amount }
       return total_rev
     end
   end

@@ -26,7 +26,7 @@ module FarMar
     end
 
     def product
-      FarMar::Product.all.find { |p| p.vendor_id = @vendor_id}
+      FarMar::Product.all.find { |p| p.vendor_id = @vendor_id }
     end
 
     def self.between(beginning_time, end_time)
