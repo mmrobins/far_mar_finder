@@ -5,12 +5,12 @@ module FarMar
 
     def initialize(m_array)
       @id = m_array[0].to_i
-      @name = m_array[1] || ""
-      @address = m_array[2] || ""
-      @city = m_array[3] || ""
-      @county = m_array[4] || ""
-      @state = m_array[5] || ""
-      @zip = m_array[6] || ""
+      @name = m_array[1] || ''
+      @address = m_array[2] || ''
+      @city = m_array[3] || ''
+      @county = m_array[4] || ''
+      @state = m_array[5] || ''
+      @zip = m_array[6] || ''
     end
 
     def self.all
@@ -44,15 +44,15 @@ module FarMar
     end
 
     def self.find_all_by_city(city)
-      all.find_all { |m| m.city.downcase.include? city.downcase }
+      all.select { |m| m.city.downcase.include? city.downcase }
     end
 
     def self.find_all_by_state(state)
-      all.find_all { |m| m.state.downcase.include? state.downcase }
+      all.select { |m| m.state.downcase.include? state.downcase }
     end
 
     def self.find_all_by_zip(zip)
-      all.find_all { |m| m.zip[0..1].include? zip[0..1] }
+      all.select { |m| m.zip[0..1].include? zip[0..1] }
     end
 
     def self.search(query)
@@ -80,19 +80,8 @@ module FarMar
     end
 
     def prefered_vendor_by_date(date)
-      vendors.sort_by {|v| v.revenue_by_date(date) }.last
+      vendors.sort_by { |v| v.revenue_by_date(date) }.last
     end
-
-      # FarMar::Sale.all.purchase_time.date == date
-      #
-      # #vendors.select do {|v| v.sales}
-      # FarMar::Sale.between(date, )
-      #
-      # sales_on_date = vendors.select do |v|
-      #    v.sales.select {|s| s.purchase_time.day == date.day && s.purchase_time.mon == date.mon}
-      #  end
-      #sales_on_date.find { |v| v.revenue == max_rev}
-
 
     def worst_vendor
       min_rev = vendors.collect { |v| v.revenue }.min

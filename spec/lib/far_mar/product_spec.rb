@@ -26,6 +26,10 @@ describe FarMar::Product do
     it "responds to most_revenue(n)" do
       expect(FarMar::Product).to respond_to :most_revenue
     end
+
+    it "returns the top n products with highest revenue" do
+      expect(FarMar::Product.most_revenue(5)[3].name).to eq "Lucky Beets"
+    end
   end
 
   describe "attributes" do

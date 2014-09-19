@@ -1,6 +1,6 @@
 module FarMar
-  class Vendor
 
+  class Vendor
     attr_accessor :id, :name, :no_of_employees, :market_id
 
     def initialize(v_array)
@@ -20,21 +20,25 @@ module FarMar
       all.find { |v| v.id == id }
     end
 
+    def self.find_by_name(name)
+      all.find { |v| v.name.downcase == name.downcase }
+    end
+
     def self.by_market(market_id)
       all.select { |v| v.market_id == market_id }
     end
 
     def self.most_revenue(n)
-      all.sort_by {|v| v.revenue}.pop(n).reverse
+      all.sort_by { |v| v.revenue }.pop(n).reverse
     end
 
     def self.most_items(n)
-      top_vendor_list = all.sort_by {|v| v.sales.count }.pop(n).reverse
-      top_vendor_list.each { |v| v.sales}.flatten
+      top_vendor_list = all.sort_by { |v| v.sales.count }.pop(n).reverse
+      top_vendor_list.each { |v| v.sales }.flatten
     end
 
     def self.revenue(date)
-      total_sales = all.collect {|v| v.revenue_by_date(date) }
+      total_sales = all.collect { |v| v.revenue_by_date(date) }
       total_sales.inject(0) { |sum, i| sum + i}
     end
 
@@ -58,12 +62,10 @@ module FarMar
     def revenue_by_date(date)
       date = Time.parse(date)
       total_rev = 0
-      all_sales_for_day = sales.select {|s| s.purchase_time.day == date.day && s.purchase_time.month == date.month}
+      all_sales_for_day = sales.select {|s| s.purchase_time.day == date.day && s.purchase_time.month == date.month }
       all_sales_for_day.map {|s| total_rev += s.amount}
       return total_rev
+
     end
-
-
   end
-
 end
