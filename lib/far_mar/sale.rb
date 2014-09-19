@@ -21,7 +21,7 @@ module FarMar
 
     def self.between(beginning_time, end_time)
       time_range = (beginning_time..end_time)
-      all.find_all { |sale| time_range.include? sale.purchase_time }
+      result = all.find_all { |sale| time_range.cover? sale.purchase_time }
     end
 
     def convert_time(string)

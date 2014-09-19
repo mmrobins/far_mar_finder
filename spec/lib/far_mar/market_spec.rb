@@ -42,15 +42,15 @@ describe FarMar::Market do
       expect(FarMar::Market.find_by_state("oreGON").id).to eq 1
     end
 
-    # it "'search('school') should return array of 3" do
-    #   school_results = FarMar::Market.search("school")
-    #   expect(school_results.count).to eq 3
-    # end
-    #
-    # it "'search('school') should find the market with id 75" do
-    #   ids = FarMar::Market.search("school").collect { |hit| hit.id }
-    #   expect(ids.include? 75)
-    # end
+    it "'search('school') should return array of 3" do
+      school_results = FarMar::Market.search("school")
+      expect(school_results.count).to eq 3
+    end
+
+    it "'search('school') should find the market with id 75" do
+      ids = FarMar::Market.search("school").collect { |hit| hit.id }
+      expect(ids.include? 75)
+    end
   end
 
   describe "attributes" do
@@ -94,6 +94,10 @@ describe FarMar::Market do
       expect(market.vendors.first.id).to eq 1
     end
 
+    it "finds all the products for the market" do
+      expect(market.products.count).to eq 13
+    end
+
     describe "#prefered_vendor" do
       it "responds" do
         expect(FarMar::Market.new({})).to respond_to :prefered_vendor
@@ -135,3 +139,5 @@ describe FarMar::Market do
     end
   end
 end
+
+#44

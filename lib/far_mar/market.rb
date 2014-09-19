@@ -52,7 +52,9 @@ module FarMar
     end
 
     def products
-      vendors.collect { |vendor| vendor.products }
+      products = []
+      vendors.collect { |vendor| products += vendor.products }
+      products
     end
 
     def self.find_by_address(search_term)

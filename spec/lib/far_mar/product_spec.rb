@@ -22,30 +22,29 @@ describe FarMar::Product do
     it "find the first product by market 1" do
       expect(FarMar::Product.by_vendor(1).first.name).to eq "Dry Beets"
     end
+# these two are slow tests??
+    describe "#revenue_hash" do
+      let(:rev_hash) { FarMar::Product.revenue_hash }
+      it "returns a hash" do
+        expect(rev_hash.class).to eq Hash
+      end
 
-  #
-  #   describe "#revenue_hash" do
-  #     let(:rev_hash) { FarMar::Product.revenue_hash }
-  #     it "returns a hash" do
-  #       expect(rev_hash.class).to eq Hash
-  #     end
-  #
-  #     it "returns Product #2 for revenue 5727" do
-  #       expect(((rev_hash.key(5727))).id).to eq 2
-  #    end
-  #  end
-  #
-  #
-  #   describe "#most_revenue" do
-  #     let(:rev_array) { FarMar::Product.most_revenue(50)}
-  #     it "returns an array of product objects" do
-  #       expect((rev_array[0]).class).to eq FarMar::Product
-  #     end
-  #
-  #     it "returns an array length 3 for top 3" do
-  #       expect(rev_array.length).to eq 50
-  #     end
-  #   end
+      it "returns Product #2 for revenue 5727" do
+        expect(((rev_hash.key(5727))).id).to eq 2
+     end
+   end
+
+
+    describe "#most_revenue" do
+      let(:rev_array) { FarMar::Product.most_revenue(50)}
+      it "returns an array of product objects" do
+        expect((rev_array[0]).class).to eq FarMar::Product
+      end
+
+      it "returns an array length 3 for top 3" do
+        expect(rev_array.length).to eq 50
+      end
+    end
   end
 
   describe "attributes" do
@@ -83,7 +82,16 @@ describe FarMar::Product do
     it "has 1 sales" do
       expect(product.sales.count).to eq 2
     end
-
   end
+
+
+  describe "#number_of_sales" do
+    let(:product) { FarMar::Product.find(1) }
+
+    it "counts the total sales of a product" do
+      expect(product.number_of_sales).to eq 7
+    end
+  end
+
 
 end

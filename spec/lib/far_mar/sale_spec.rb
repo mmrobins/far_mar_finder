@@ -22,6 +22,12 @@ describe FarMar::Sale do
       expect((FarMar::Sale.find_all_by_date(Date.new(2013,11,13))).count).to eq 669
     end
 
+    it "finds all sales between a certain time" do
+      start_time = DateTime.new(2013,11,13,0,0,01,'-8')
+      end_time = DateTime.new(2013,11,13,23,59,59,'-8')
+      expect(FarMar::Sale.between(start_time, end_time).count).to eq 669
+    end
+
   end
 
   describe "attributes" do
