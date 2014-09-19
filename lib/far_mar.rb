@@ -69,4 +69,13 @@ require_relative 'far_mar/sale'
 # puts FarMar::Product.most_revenue(10)
 # FarMar::Product.most_revenue(10).each {|v| puts v.name + " count:  " + v.revenue.to_s}
 # puts FarMar::Market.find(1).city
-FarMar::Market.find_all_by_zip("98").each { |m| puts m.zip }
+# FarMar::Market.find_all_by_zip("98").each { |m| puts m.zip }
+# puts FarMar::Market.find_all_by_zip("98").count
+puts FarMar::Market.find_by_name("Pinecrest Gardens Farmers Market").name
+
+# puts FarMar::Market.find_by_zip("98383").name
+#puts FarMar::Market.find_all_by_name("garden")
+#puts FarMar::Market.find_all_by_name("garden").count
+
+#puts FarMar::Market.find_all_by_city("Kansas City").count
+#puts FarMar::Market.find_all_by_state("Minnesota").count

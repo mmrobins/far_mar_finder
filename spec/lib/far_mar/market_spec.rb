@@ -28,6 +28,71 @@ describe FarMar::Market do
       expect(FarMar::Market.search('school')[0].name).to eq "Fox School Farmers Market"
     end
 
+    it "responds to 'find_by_name'" do
+      expect(FarMar::Market).to respond_to :find_by_name
+    end
+
+    it "finds a market with the given name" do
+      expect(FarMar::Market.find_by_name("Pinecrest Gardens Farmers Market").name).to eq "Pinecrest Gardens Farmers Market"
+    end
+
+    it "responds to 'find_by_city'" do
+      expect(FarMar::Market).to respond_to :find_by_city
+    end
+
+    it "finds a market with the given city" do
+      expect(FarMar::Market.find_by_city("New York").name).to eq "East Harlem Farmer's Market"
+    end
+
+    it "responds to 'find_by_state'" do
+      expect(FarMar::Market).to respond_to :find_by_state
+    end
+
+    it "finds a market with the given state" do
+      expect(FarMar::Market.find_by_state("Wyoming").name).to eq "Cheyenne Farmers Market"
+    end
+
+    it "responds to 'find_by_zip'" do
+      expect(FarMar::Market).to respond_to :find_by_zip
+    end
+
+    it "finds a market with the given zip" do
+      expect(FarMar::Market.find_by_zip("98383").name).to eq "Silverdale Farmers Market"
+    end
+
+    it "responds to 'find_all_by_name'" do
+      expect(FarMar::Market).to respond_to :find_all_by_name
+    end
+
+    it "finds all the markets whose name contains the search term" do
+      expect(FarMar::Market.find_all_by_name("garden").count).to eq 8
+    end
+
+    it "responds to 'find_all_by_city'" do
+      expect(FarMar::Market).to respond_to :find_all_by_city
+    end
+
+    it "finds all the markets whose city contains the search term" do
+      expect(FarMar::Market.find_all_by_city("Kansas City").count).to eq 2
+    end
+
+    it "responds to 'find_all_by_state'" do
+      expect(FarMar::Market).to respond_to :find_all_by_state
+    end
+
+    it "finds all the markets whose state contains the search term" do
+      expect(FarMar::Market.find_all_by_state("Minnesota").count).to eq 7
+    end
+
+    it "responds to 'find_all_by_zip'" do
+      expect(FarMar::Market).to respond_to :find_all_by_zip
+    end
+
+    it "finds all the markets whose zip contains the search term" do
+      expect(FarMar::Market.find_all_by_zip("98").count).to eq 7
+    end
+
+
   end
 
   describe "attributes" do
