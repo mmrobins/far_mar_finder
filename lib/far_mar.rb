@@ -26,7 +26,7 @@ require_relative 'far_mar/sale'
 #
 # puts FarMar::Vendor.all[17].products.count
 #
-# puts FarMar::Market.find(5).products.count
+ #puts FarMar::Market.find(5)
 # puts "This vendor's revenue is: #{FarMar::Vendor.find(1).revenue}"
 # puts FarMar::Product.by_vendor(17).count
 # puts FarMar::Product.by_vendor(18).count
@@ -58,7 +58,7 @@ require_relative 'far_mar/sale'
 # FarMar::Vendor.most_revenue(5).each {|v| puts v.name + ":  " + v.revenue.to_s}
 # puts FarMar::Vendor.most_revenue.name
 # puts FarMar::Vendor.find(2590).name
-# puts FarMar::Vendor.find(2590).revenue
+#puts FarMar::Vendor.find(2590).revenue
 # puts FarMar::Vendor.most_items(10)
 # FarMar::Vendor.most_items(100).each {|v| puts v.name + " count:  " + v.sales.count.to_s + " id: " + v.id.to_s }
 # puts FarMar::Vendor.find(2583).sales.count
@@ -87,4 +87,7 @@ require_relative 'far_mar/sale'
 
 # puts FarMar::Product.find_by_name("Embarrassed Beef").name
 
-puts FarMar::Product.find_all_by_name("high mushrooms").count
+#puts FarMar::Product.find_all_by_name("high mushrooms").count
+
+#puts FarMar::Product.find(62).number_of_sales
+puts FarMar::Vendor.find_by_name("Stamm Inc").name

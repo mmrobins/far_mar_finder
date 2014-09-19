@@ -19,6 +19,14 @@ describe FarMar::Vendor do
       expect(FarMar::Vendor).to respond_to :by_market
     end
 
+    it "responds to 'find_by_name'" do
+      expect(FarMar::Vendor).to respond_to :find_by_name
+    end
+
+    it "responds to 'find the vendor that matches a specific name'" do
+      expect(FarMar::Vendor.find_by_name("Stamm Inc").name).to eq "Stamm Inc"
+    end
+
     it "responds to 'find_all_by_name'" do
       expect(FarMar::Vendor).to respond_to :find_all_by_name
     end
