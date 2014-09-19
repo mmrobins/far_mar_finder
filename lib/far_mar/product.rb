@@ -21,7 +21,14 @@ module FarMar
 
     def self.by_vendor(vendor_id)
       all.select { |p| p.vendor_id == vendor_id }
+    end
 
+    def self.find_by_name(name)
+      all.find { |p| p.name.downcase == name.downcase }
+    end
+
+    def self.find_all_by_name(name)
+      all.select { |p| p.name.downcase.include? name.downcase }
     end
 
     def self.most_revenue(n)

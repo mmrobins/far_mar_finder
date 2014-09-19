@@ -19,6 +19,14 @@ describe FarMar::Vendor do
       expect(FarMar::Vendor).to respond_to :by_market
     end
 
+    it "responds to 'find_all_by_name'" do
+      expect(FarMar::Vendor).to respond_to :find_all_by_name
+    end
+
+    it "finds all the Vendors that match given name" do
+      expect(FarMar::Vendor.find_all_by_name("windler").count).to eq 11
+    end
+
     it "find the first vendor by market 1" do
       expect(FarMar::Vendor.by_market(100).first.name).to eq "Schiller-Ledner"
     end
@@ -46,7 +54,6 @@ describe FarMar::Vendor do
     it "returns the revenue for all the vendors for a specific date" do
       expect(FarMar::Vendor.revenue("November 10, 2013")).to eq 9119618
     end
-
   end
 
   describe "attributes" do

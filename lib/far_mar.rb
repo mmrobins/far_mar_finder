@@ -50,7 +50,7 @@ require_relative 'far_mar/sale'
 # puts FarMar::Market.find(1).worst_vendor_by_date("November 10, 2013").revenue
 # puts
 # puts "Best Vendor on November 10, 2013"
-puts FarMar::Market.find(1).prefered_vendor_by_date("November 10, 2013")
+# puts FarMar::Market.find(1).prefered_vendor_by_date("November 10, 2013")
 # puts "Name is #{FarMar::Market.find(1).prefered_vendor_by_date("November 10, 2013").name}"
 # puts "ID is #{FarMar::Market.find(1).prefered_vendor_by_date("November 10, 2013").id}"
 # puts "Revenue is: #{FarMar::Market.find(1).prefered_vendor_by_date("November 10, 2013").revenue}"
@@ -82,3 +82,9 @@ puts FarMar::Market.find(1).prefered_vendor_by_date("November 10, 2013")
 
 # puts FarMar::Market.find_all_by_city("Kansas City").count
 # puts FarMar::Market.find_all_by_state("Minnesota").count
+
+# FarMar::Vendor.find_all_by_name("windler").each { |n| puts n.name }
+
+# puts FarMar::Product.find_by_name("Embarrassed Beef").name
+
+puts FarMar::Product.find_all_by_name("high mushrooms").count

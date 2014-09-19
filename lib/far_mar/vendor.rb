@@ -28,6 +28,10 @@ module FarMar
       all.select { |v| v.market_id == market_id }
     end
 
+    def self.find_all_by_name(name)
+      all.select { |v| v.name.downcase.include? name.downcase }
+    end
+
     def self.most_revenue(n)
       all.sort_by { |v| v.revenue }.pop(n).reverse
     end
@@ -65,7 +69,6 @@ module FarMar
       all_sales_for_day = sales.select {|s| s.purchase_time.day == date.day && s.purchase_time.month == date.month }
       all_sales_for_day.map {|s| total_rev += s.amount}
       return total_rev
-
     end
   end
 end

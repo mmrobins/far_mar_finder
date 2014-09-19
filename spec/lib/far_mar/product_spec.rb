@@ -19,6 +19,22 @@ describe FarMar::Product do
       expect(FarMar::Product).to respond_to :by_vendor
     end
 
+    it "responds to 'find_by_name'" do
+      expect(FarMar::Product).to respond_to :find_by_name
+    end
+
+    it "finds a market with the given name" do
+      expect(FarMar::Product.find_by_name("Embarrassed Beef").name).to eq "Embarrassed Beef"
+    end
+
+    it "responds to 'find_all_by_name'" do
+      expect(FarMar::Product).to respond_to :find_by_name
+    end
+
+    it "finds a market with the given name" do
+      expect(FarMar::Product.find_all_by_name("high mushrooms").count).to eq 4
+    end
+
     it "find the first product by market 1" do
       expect(FarMar::Product.by_vendor(1).first.name).to eq "Dry Beets"
     end
