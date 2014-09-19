@@ -5,7 +5,7 @@ module FarMar
 
     def initialize(v_array)
       @id = v_array[0].to_i
-      @name = v_array[1]
+      @name = v_array[1] || ""
       @no_of_employees = v_array[2].to_i
       @market_id = v_array[3].to_i
     end
@@ -54,7 +54,6 @@ module FarMar
       all_sales = sales.collect { |s| s.amount }
       all_sales.inject(0) { |sum, i| sum + i }
     end
-
 
     def revenue_by_date(date)
       date = Time.parse(date)

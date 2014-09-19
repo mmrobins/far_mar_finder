@@ -26,18 +26,18 @@ require_relative 'far_mar/sale'
 #
 # puts FarMar::Vendor.all[17].products.count
 #
-#puts FarMar::Market.find(5).products.count
-#puts "This vendor's revenue is: #{FarMar::Vendor.find(1).revenue}"
- # puts FarMar::Product.by_vendor(17).count
- # puts FarMar::Product.by_vendor(18).count
+# puts FarMar::Market.find(5).products.count
+# puts "This vendor's revenue is: #{FarMar::Vendor.find(1).revenue}"
+# puts FarMar::Product.by_vendor(17).count
+# puts FarMar::Product.by_vendor(18).count
 # puts FarMar::Market.search('School').inspect
-#a = FarMar::Market.all + FarMar::Vendor.all
-#puts FarMar::Market.all.count
-#puts FarMar::Vendor.all.count
-#puts a
+# a = FarMar::Market.all + FarMar::Vendor.all
+# puts FarMar::Market.all.count
+# puts FarMar::Vendor.all.count
+# puts a
 
-#markets_vendors = FarMar::Vendor.all.concat(FarMar::Market.all)
-#puts markets_vendors.count
+# markets_vendors = FarMar::Vendor.all.concat(FarMar::Market.all)
+# puts markets_vendors.count
 # puts FarMar::Market.find(1).prefered_vendor
 # puts FarMar::Market.find(1).prefered_vendor.name
 #
@@ -55,18 +55,18 @@ require_relative 'far_mar/sale'
 # puts "ID is #{FarMar::Market.find(1).prefered_vendor_by_date("November 10, 2013").id}"
 # puts "Revenue is: #{FarMar::Market.find(1).prefered_vendor_by_date("November 10, 2013").revenue}"
 
-#FarMar::Vendor.most_revenue(5).each {|v| puts v.name + ":  " + v.revenue.to_s}
-#puts FarMar::Vendor.most_revenue.name
-#puts FarMar::Vendor.find(2590).name
-#puts FarMar::Vendor.find(2590).revenue
- # puts FarMar::Vendor.most_items(10)
- #FarMar::Vendor.most_items(100).each {|v| puts v.name + " count:  " + v.sales.count.to_s + " id: " + v.id.to_s }
+# FarMar::Vendor.most_revenue(5).each {|v| puts v.name + ":  " + v.revenue.to_s}
+# puts FarMar::Vendor.most_revenue.name
+# puts FarMar::Vendor.find(2590).name
+# puts FarMar::Vendor.find(2590).revenue
+# puts FarMar::Vendor.most_items(10)
+# FarMar::Vendor.most_items(100).each {|v| puts v.name + " count:  " + v.sales.count.to_s + " id: " + v.id.to_s }
 # puts FarMar::Vendor.find(2583).sales.count
 
 # puts FarMar::Vendor.find(1).revenue_by_date("November 10, 2013")
 # puts FarMar::Vendor.revenue("November 10, 2013")
 
-#puts FarMar::Product.most_revenue(10)
-#FarMar::Product.most_revenue(10).each {|v| puts v.name + " count:  " + v.revenue.to_s}
-#puts FarMar::Market.find(1).city
-puts FarMar::Market.find_by_city("Pinecrest").city
+# puts FarMar::Product.most_revenue(10)
+# FarMar::Product.most_revenue(10).each {|v| puts v.name + " count:  " + v.revenue.to_s}
+# puts FarMar::Market.find(1).city
+FarMar::Market.find_all_by_zip("98").each { |m| puts m.zip }

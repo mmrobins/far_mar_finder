@@ -5,12 +5,12 @@ module FarMar
 
     def initialize(m_array)
       @id = m_array[0].to_i
-      @name = m_array[1]
-      @address = m_array[2]
+      @name = m_array[1] || ""
+      @address = m_array[2] || ""
       @city = m_array[3] || ""
-      @county = m_array[4]
-      @state = m_array[5]
-      @zip = m_array[6]
+      @county = m_array[4] || ""
+      @state = m_array[5] || ""
+      @zip = m_array[6] || ""
     end
 
     def self.all
@@ -24,16 +24,35 @@ module FarMar
     end
 
     def self.find_by_name(name)
-      all.find { |m| m.name.downcase.include? name.downcase }
+      all.find { |m| m.name.downcase == name.downcase }
     end
 
     def self.find_by_city(city)
-      all.find do |m|
-        # if m.city == nil
-        #   puts m.id
-        # end
-        m.city.downcase == city.downcase
-      end
+      all.find { |m| m.city.downcase == city.downcase }
+    end
+
+    def self.find_by_state(state)
+      all.find { |m| m.state.downcase == state.downcase }
+    end
+
+    def self.find_by_zip(zip)
+      all.find { |m| m.zip == zip }
+    end
+
+    def self.find_all_by_name(name)
+      all.select { |m| m.name.downcase.include? name.downcase }
+    end
+
+    def self.find_all_by_city(city)
+      all.find_all { |m| m.city.downcase.include? city.downcase }
+    end
+
+    def self.find_all_by_state(state)
+      all.find_all { |m| m.state.downcase.include? state.downcase }
+    end
+
+    def self.find_all_by_zip(zip)
+      all.find_all { |m| m.zip[0..1].include? zip[0..1] }
     end
 
     def self.search(query)
