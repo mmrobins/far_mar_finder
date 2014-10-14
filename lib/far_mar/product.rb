@@ -10,12 +10,10 @@ module FarMar
     end
 
     def vendor
-      Vendor.all
       Vendor.find(@vendor_id)
     end
 
     def sales
-      Sale.all
       Sale.by_product(@id)
     end
 
@@ -28,25 +26,11 @@ module FarMar
     end
 
     def self.most_revenue(n)
-      rev_hash = revenue_hash
-      revenue_array = rev_hash.values.sort.reverse
-      revenue_array = revenue_array.slice(0...n)
-      revenue_array.collect do |rev_amount|
-        product_key = rev_hash.key(rev_amount)
-        rev_hash.delete(product_key)
-        product_key
-      end
-    end
-
-    def self.revenue_hash
-      rev_hash = {}
-      all.each do |product|
-        rev_hash[product] ||= product.revenue
-      end
-      rev_hash
+      all.sort_by(&:revenue).reverse[0..n-1]
     end
 
     def revenue
+      return 0 unless sales
       sum = 0
       sales.each { |sale| sum += sale.amount }
       sum

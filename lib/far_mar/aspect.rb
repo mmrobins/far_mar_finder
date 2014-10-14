@@ -5,6 +5,10 @@ module FarMar
       @object_array ||= load_file(@path).collect { |obj| new(obj) }
     end
 
+    def self.all_by_id
+      @object_hash ||= Hash[*all.map {|o| [o.id, o]}.flatten]
+    end
+
     def self.load_file(file_path)
       CSV.read(file_path)
     end
@@ -14,7 +18,7 @@ module FarMar
     end
 
     def self.find(id)
-      all.find { |object| object.id == id }
+      all_by_id[id]
     end
 
     def self.find_by_name(search_term)

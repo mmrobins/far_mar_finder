@@ -11,8 +11,12 @@ module FarMar
       @product_id = sale_array[4].to_i
     end
 
+    def self.grouped_by_product
+      @grouped_by_product ||= all.group_by {|s| s.product_id}
+    end
+
     def self.by_product(product_id)
-      all.find_all { |sale| sale.product_id == product_id }
+      grouped_by_product[product_id]
     end
 
     def self.by_vendor(vendor_id)
