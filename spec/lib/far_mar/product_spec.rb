@@ -44,6 +44,9 @@ describe FarMar::Product do
     end
 
     it "returns the top n products with highest revenue" do
+      top = FarMar::Product.most_revenue(5)
+      expect(top[0].revenue).to be > top[1].revenue
+
       expect(FarMar::Product.most_revenue(5)[3].name).to eq "Lucky Beets"
     end
   end

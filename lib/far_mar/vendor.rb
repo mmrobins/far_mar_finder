@@ -51,7 +51,7 @@ module FarMar
     end
 
     def sales
-      FarMar::Sale.all.select { |s| s.vendor_id == @id }
+      FarMar::Sale.all_by_vendor[@id] || []
     end
 
     def products
