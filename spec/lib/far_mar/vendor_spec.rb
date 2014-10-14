@@ -23,17 +23,6 @@ describe FarMar::Vendor do
       expect(FarMar::Vendor.by_market(100).first.name).to eq "Schiller-Ledner"
     end
 
-    describe "#revenue_hash" do
-      let(:rev_hash) { FarMar::Vendor.revenue_hash }
-      it "returns a hash" do
-        expect(rev_hash.class).to eq Hash
-      end
-
-      it "returns Vendor #2 for revenue 5727" do
-        expect(((rev_hash.key(5727))).id).to eq 2
-     end
-   end
-
     describe "#most_revenue" do
       let(:rev_array) { FarMar::Vendor.most_revenue(3)}
       it "returns an array of vendor objects" do

@@ -30,7 +30,6 @@ module FarMar
     end
 
     def revenue
-      return 0 unless sales
       sum = 0
       sales.each { |sale| sum += sale.amount }
       sum

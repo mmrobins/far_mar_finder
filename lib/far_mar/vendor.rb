@@ -15,18 +15,17 @@ module FarMar
     end
 
     def products
-      Product.all
       Product.by_vendor(@id)
     end
 
     def revenue(date = nil)
+      return 0 unless sales
       sum = 0
       sales(date).each { |sale| sum += sale.amount }
       sum
     end
 
     def sales(date = nil) #date is a date object (not a date time obj)
-      Sale.all
       sales = Sale.by_vendor(@id)
       if date != nil
         sales = sales.find_all { |sale| sale.purchase_time === date }
@@ -54,22 +53,7 @@ module FarMar
     end
 
     def self.most_revenue(n)
-      rev_hash = revenue_hash
-      revenue_array = rev_hash.values.sort.reverse
-      revenue_array = revenue_array.slice(0...n)
-      revenue_array.collect do |rev_amount|
-        vendor_key = rev_hash.key(rev_amount)
-        rev_hash.delete(vendor_key)
-        vendor_key
-      end
-    end
-
-    def self.revenue_hash
-      rev_hash = {}
-      all.each do |vendor|
-        rev_hash[vendor] ||= vendor.revenue
-      end
-      rev_hash
+      all.sort_by(&:revenue).reverse[0..n-1]
     end
 
     def self.by_market(market_id)
