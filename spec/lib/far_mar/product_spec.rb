@@ -27,7 +27,12 @@ describe FarMar::Product do
     describe "#most_revenue" do
       let(:rev_array) { FarMar::Product.most_revenue(50)}
       it "returns an array of product objects" do
-        expect((rev_array[0]).class).to eq FarMar::Product
+        result = RubyProf.profile do
+          expect((rev_array[0]).class).to eq FarMar::Product
+        end
+
+        printer = RubyProf::GraphPrinter.new(result)
+        printer.print(STDOUT, {})
       end
 
       it "returns an array length 3 for top 3" do
